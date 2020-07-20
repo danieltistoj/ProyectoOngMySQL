@@ -23,6 +23,7 @@ public class ConexionBD {
     private Statement sentencia;//Se utiliza para ejecutar la instruccion o consulta
     private ResultSet resultSet;//Se utiliza para recibir los datos resultado de la instruccion o consulta 
     
+    
     /*Este constructor es utilizado cuando el usuario necesita conectarse al motor de base de datos con un nombre de usuario y una contrasena*/
     public ConexionBD(String claseNombre, String cadenaConexion, String usuario,String contrasena){
         try {
