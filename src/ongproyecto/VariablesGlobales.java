@@ -12,5 +12,4 @@ package ongproyecto;
  */
 public class VariablesGlobales {
     public static conexionMySQL conexion = new conexionMySQL("3305","basedatosong","root","xela2020");
-
 }
