@@ -30,30 +30,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jdpPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        ItemInsumos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jdpPrincipalLayout = new javax.swing.GroupLayout(jdpPrincipal);
+        jdpPrincipal.setLayout(jdpPrincipalLayout);
+        jdpPrincipalLayout.setHorizontalGroup(
+            jdpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1048, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jdpPrincipalLayout.setVerticalGroup(
+            jdpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 620, Short.MAX_VALUE)
         );
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menuoptions_85724.png"))); // NOI18N
         jMenu1.setText("Opciones");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/food_78419.png"))); // NOI18N
-        jMenuItem1.setText("Insumos");
-        jMenu1.add(jMenuItem1);
+        ItemInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/food_78419.png"))); // NOI18N
+        ItemInsumos.setText("Insumos");
+        ItemInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemInsumosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ItemInsumos);
 
         jMenuBar1.add(jMenu1);
 
@@ -63,15 +68,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jdpPrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jdpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ItemInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemInsumosActionPerformed
+      VentanaInternaInsumo insumo = new VentanaInternaInsumo();
+      this.jdpPrincipal.add(insumo);
+      insumo.show();
+    }//GEN-LAST:event_ItemInsumosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,9 +120,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuItem ItemInsumos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JDesktopPane jdpPrincipal;
     // End of variables declaration//GEN-END:variables
 }

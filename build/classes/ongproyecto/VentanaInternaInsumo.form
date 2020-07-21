@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+    <Property name="iconifiable" type="boolean" value="true"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -56,13 +60,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="rSButtonRiple1" min="-2" max="-2" attributes="0"/>
-                          <Component id="rSButtonRiple2" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonNuevo" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonReporte" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rSPanelShadow2" min="-2" pref="211" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="rSPanelsSlider1" max="32767" attributes="0"/>
+                      <Component id="pnlSlider" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -73,15 +77,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-                              <Component id="rSButtonRiple1" min="-2" max="-2" attributes="0"/>
+                              <Component id="botonNuevo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="rSButtonRiple2" min="-2" max="-2" attributes="0"/>
+                              <Component id="botonReporte" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="rSPanelsSlider1" max="32767" attributes="0"/>
+                                  <Component id="pnlSlider" max="32767" attributes="0"/>
                                   <Component id="rSPanelShadow2" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -145,17 +149,20 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="rojeru_san.RSButtonRiple" name="rSButtonRiple1">
+            <Component class="rojeru_san.RSButtonRiple" name="botonNuevo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nuevo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonNuevoActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="rojeru_san.RSButtonRiple" name="rSButtonRiple2">
+            <Component class="rojeru_san.RSButtonRiple" name="botonReporte">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte"/>
               </Properties>
             </Component>
-            <Container class="rojeru_san.RSPanelsSlider" name="rSPanelsSlider1">
+            <Container class="rojeru_san.RSPanelsSlider" name="pnlSlider">
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
               <SubComponents>
@@ -295,7 +302,7 @@
                                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                       <Component id="rSButtonRiple3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="rSButtonRiple4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="botonCancelar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="50" max="32767" attributes="0"/>
@@ -313,7 +320,7 @@
                               <EmptySpace pref="116" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="rSButtonRiple3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rSButtonRiple4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                           </Group>
@@ -351,13 +358,16 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="rojeru_san.RSButtonRiple" name="rSButtonRiple4">
+                    <Component class="rojeru_san.RSButtonRiple" name="botonCancelar">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Roboto Bold" size="18" style="1"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelarActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

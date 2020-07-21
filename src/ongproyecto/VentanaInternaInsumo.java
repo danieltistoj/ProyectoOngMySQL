@@ -5,6 +5,8 @@
  */
 package ongproyecto;
 
+import rojeru_san.RSPanelsSlider;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
@@ -32,9 +34,9 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         rSPanelShadow2 = new rojeru_san.RSPanelShadow();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        rSButtonRiple1 = new rojeru_san.RSButtonRiple();
-        rSButtonRiple2 = new rojeru_san.RSButtonRiple();
-        rSPanelsSlider1 = new rojeru_san.RSPanelsSlider();
+        botonNuevo = new rojeru_san.RSButtonRiple();
+        botonReporte = new rojeru_san.RSButtonRiple();
+        pnlSlider = new rojeru_san.RSPanelsSlider();
         pnlTablaInsumos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         rSMTextFull1 = new rojeru_san.RSMTextFull();
@@ -46,7 +48,10 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         rSMTextFull2 = new rojeru_san.RSMTextFull();
         rSMTextFull3 = new rojeru_san.RSMTextFull();
         rSButtonRiple3 = new rojeru_san.RSButtonRiple();
-        rSButtonRiple4 = new rojeru_san.RSButtonRiple();
+        botonCancelar = new rojeru_san.RSButtonRiple();
+
+        setClosable(true);
+        setIconifiable(true);
 
         rSPanelShadow1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -77,9 +82,14 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
 
         rSPanelShadow2.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        rSButtonRiple1.setText("Nuevo");
+        botonNuevo.setText("Nuevo");
+        botonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoActionPerformed(evt);
+            }
+        });
 
-        rSButtonRiple2.setText("Reporte");
+        botonReporte.setText("Reporte");
 
         pnlTablaInsumos.setBackground(new java.awt.Color(255, 255, 255));
         pnlTablaInsumos.setName("pnlTablaInsumos"); // NOI18N
@@ -136,7 +146,7 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        rSPanelsSlider1.add(pnlTablaInsumos, "card2");
+        pnlSlider.add(pnlTablaInsumos, "card2");
 
         pnlNuevoInsumo.setBackground(new java.awt.Color(255, 255, 255));
         pnlNuevoInsumo.setName("pnlNuevoInsumo"); // NOI18N
@@ -153,8 +163,13 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         rSButtonRiple3.setText("Aceptar");
         rSButtonRiple3.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
 
-        rSButtonRiple4.setText("Cancelar");
-        rSButtonRiple4.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        botonCancelar.setText("Cancelar");
+        botonCancelar.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlNuevoInsumoLayout = new javax.swing.GroupLayout(pnlNuevoInsumo);
         pnlNuevoInsumo.setLayout(pnlNuevoInsumoLayout);
@@ -172,7 +187,7 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
                         .addGap(57, 57, 57)
                         .addComponent(rSButtonRiple3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(rSButtonRiple4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         pnlNuevoInsumoLayout.setVerticalGroup(
@@ -186,11 +201,11 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(pnlNuevoInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rSButtonRiple3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSButtonRiple4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93))
         );
 
-        rSPanelsSlider1.add(pnlNuevoInsumo, "card3");
+        pnlSlider.add(pnlNuevoInsumo, "card3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,12 +214,12 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rSButtonRiple1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSButtonRiple2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rSPanelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(rSPanelsSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,14 +228,14 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(176, 176, 176)
-                        .addComponent(rSButtonRiple1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(rSButtonRiple2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rSPanelsSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(rSPanelShadow2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -241,8 +256,27 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+        if(!this.botonNuevo.isSelected()){
+            this.botonNuevo.setSelected(true);
+            this.botonCancelar.setSelected(false);
+            this.pnlSlider.setPanelSlider(20,pnlNuevoInsumo,RSPanelsSlider.DIRECT.RIGHT);
+        }
+    }//GEN-LAST:event_botonNuevoActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+       if(!this.botonCancelar.isSelected()){
+            this.botonNuevo.setSelected(false);
+            this.botonCancelar.setSelected(true);
+            this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
+        }
+    }//GEN-LAST:event_botonCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojeru_san.RSButtonRiple botonCancelar;
+    private rojeru_san.RSButtonRiple botonNuevo;
+    private rojeru_san.RSButtonRiple botonReporte;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -251,17 +285,14 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlNuevoInsumo;
+    private rojeru_san.RSPanelsSlider pnlSlider;
     private javax.swing.JPanel pnlTablaInsumos;
-    private rojeru_san.RSButtonRiple rSButtonRiple1;
-    private rojeru_san.RSButtonRiple rSButtonRiple2;
     private rojeru_san.RSButtonRiple rSButtonRiple3;
-    private rojeru_san.RSButtonRiple rSButtonRiple4;
     private rojeru_san.RSMTextFull rSMTextFull1;
     private rojeru_san.RSMTextFull rSMTextFull2;
     private rojeru_san.RSMTextFull rSMTextFull3;
     private rojeru_san.RSPanelShadow rSPanelShadow1;
     private rojeru_san.RSPanelShadow rSPanelShadow2;
-    private rojeru_san.RSPanelsSlider rSPanelsSlider1;
     private rojerusan.RSTableMetro rSTableMetro1;
     // End of variables declaration//GEN-END:variables
 }
