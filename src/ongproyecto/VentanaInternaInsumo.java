@@ -5,6 +5,7 @@
  */
 package ongproyecto;
 
+import javax.swing.JOptionPane;
 import rojeru_san.RSPanelsSlider;
 
 /**
@@ -13,11 +14,10 @@ import rojeru_san.RSPanelsSlider;
  */
 public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VentanaInternaInsumo
-     */
+    private String[] titulos = {"ID","Nombre","Descripcion"};
     public VentanaInternaInsumo() {
         initComponents();
+        CargarTabla();
     }
 
     /**
@@ -39,10 +39,10 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         pnlSlider = new rojeru_san.RSPanelsSlider();
         pnlTablaInsumos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        rSMTextFull1 = new rojeru_san.RSMTextFull();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtBuscar = new rojeru_san.RSMTextFull();
         jScrollPane1 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojerusan.RSTableMetro();
+        tablaInsumos = new rojerusan.RSTableMetro();
+        botonCargar = new rojeru_san.RSButton();
         pnlNuevoInsumo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         rSMTextFull2 = new rojeru_san.RSMTextFull();
@@ -99,24 +99,37 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Insumos");
 
-        rSMTextFull1.setPlaceholder("Buscar...");
+        txtBuscar.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        txtBuscar.setPlaceholder("Buscar por ID o por Nombre...");
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyTyped(evt);
+            }
+        });
 
-        jComboBox1.setBackground(new java.awt.Color(0, 112, 192));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "ID" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaInsumos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "ID", "Nombre", "Descripcion"
+
             }
         ));
-        jScrollPane1.setViewportView(rSTableMetro1);
+        tablaInsumos.setAlignmentX(0.6F);
+        tablaInsumos.setAlignmentY(0.6F);
+        tablaInsumos.setFuenteFilas(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tablaInsumos.setFuenteFilasSelect(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jScrollPane1.setViewportView(tablaInsumos);
+
+        botonCargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seo-social-web-network-internet_340_icon-icons.com_61497.png"))); // NOI18N
+        botonCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlTablaInsumosLayout = new javax.swing.GroupLayout(pnlTablaInsumos);
         pnlTablaInsumos.setLayout(pnlTablaInsumosLayout);
@@ -126,24 +139,24 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
             .addGroup(pnlTablaInsumosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTablaInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
                     .addGroup(pnlTablaInsumosLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rSMTextFull1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(botonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlTablaInsumosLayout.setVerticalGroup(
             pnlTablaInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTablaInsumosLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlTablaInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rSMTextFull1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(pnlTablaInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pnlSlider.add(pnlTablaInsumos, "card2");
@@ -188,7 +201,7 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
                         .addComponent(rSButtonRiple3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         pnlNuevoInsumoLayout.setVerticalGroup(
             pnlNuevoInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,6 +269,19 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void CargarTabla(){
+        String consulta = "select * from insumo "; //Consulta basica
+        int id;
+        if(!"".equals(txtBuscar.getText())){ //Se ve si la caja de texto esta vacia. 
+            try {
+               id = Integer.parseInt(txtBuscar.getText());//Se pasa de String a Int 
+               consulta = consulta + "where idinsumo = "+id;//Si no hay error al pasar el String a Int se agrega a la condicion la sentencia de ID
+            } catch (Exception e) {//Si hay error al pasar de String a Int se agrega a la condicion la sentencia de nombre
+                consulta = consulta + "where nombre = '"+txtBuscar.getText()+"'";
+            }
+        }
+        VariablesGlobales.conexion.llenarTabla(titulos,tablaInsumos,consulta);//Clase que hereda de conexionMySQL y conexionMySQL hereda de ConexionBD
+    }
     private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
         if(!this.botonNuevo.isSelected()){
             this.botonNuevo.setSelected(true);
@@ -272,12 +298,22 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_botonCancelarActionPerformed
 
+    private void botonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarActionPerformed
+        CargarTabla();
+    }//GEN-LAST:event_botonCargarActionPerformed
+
+    private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
+      if(txtBuscar.getText().length() == 0){
+          CargarTabla();
+      }
+    }//GEN-LAST:event_txtBuscarKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.RSButtonRiple botonCancelar;
+    private rojeru_san.RSButton botonCargar;
     private rojeru_san.RSButtonRiple botonNuevo;
     private rojeru_san.RSButtonRiple botonReporte;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -288,11 +324,11 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
     private rojeru_san.RSPanelsSlider pnlSlider;
     private javax.swing.JPanel pnlTablaInsumos;
     private rojeru_san.RSButtonRiple rSButtonRiple3;
-    private rojeru_san.RSMTextFull rSMTextFull1;
     private rojeru_san.RSMTextFull rSMTextFull2;
     private rojeru_san.RSMTextFull rSMTextFull3;
     private rojeru_san.RSPanelShadow rSPanelShadow1;
     private rojeru_san.RSPanelShadow rSPanelShadow2;
-    private rojerusan.RSTableMetro rSTableMetro1;
+    private rojerusan.RSTableMetro tablaInsumos;
+    private rojeru_san.RSMTextFull txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
