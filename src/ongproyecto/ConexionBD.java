@@ -95,7 +95,7 @@ public class ConexionBD {
          return vacio;
      }
      
-     public void llenarTabla(String[] titulos,JTable tabla,String consulta){
+     private void llenarTabla(String[] titulos,JTable tabla,String consulta){
        Statement sentenciaAux;//Objeto que se usa para usar ejecutar sentencias de SQL. Ejecuta una sentencia SQL simple que no tiene ningun parametro.
        ResultSet resultSetAux;//Contiene los resultados de una consulta SQL. Mantiene un cursor apuntando a su fila de datos actual. 
        ResultSetMetaData rsMd; //Metodo que obtiene el numero, tipo y propiedades de las columnas de un ResultSet.
@@ -126,5 +126,19 @@ public class ConexionBD {
          }
        
      }
-
+     
+     public void CargarTabla(String tabla,String parametro,String[] titulo,JTable tablaInterfaz ){
+        String consulta = "select * from "+tabla; //Consulta basica
+        int id;
+        if(!"".equals(parametro)){ //Se ve si la caja de texto esta vacia. 
+            try {
+               id = Integer.parseInt(parametro);//Se pasa de String a Int 
+               consulta = consulta + " where idinsumo = "+id;//Si no hay error al pasar el String a Int se agrega a la condicion la sentencia de ID
+                System.out.println(consulta);
+            } catch (Exception e) {//Si hay error al pasar de String a Int se agrega a la condicion la sentencia de nombre
+                consulta = consulta + " where nombre = '"+parametro+"'";
+            }
+        }
+         llenarTabla(titulo, tablaInterfaz, consulta);//Clase que hereda de conexionMySQL y conexionMySQL hereda de ConexionBD
+    }
 }

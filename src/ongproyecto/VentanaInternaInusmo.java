@@ -7,17 +7,18 @@ package ongproyecto;
 
 import javax.swing.JOptionPane;
 import rojeru_san.RSPanelsSlider;
+import rojerusan.RSAnimation;
 
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
+public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
 
     private String[] titulos = {"ID","Nombre","Descripcion"};
-    public VentanaInternaInsumo() {
+    public VentanaInternaInusmo() {
         initComponents();
-        CargarTabla();
+        VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
     }
 
     /**
@@ -29,6 +30,10 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        menuItemEliminar = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        menuItemModificar = new javax.swing.JMenuItem();
         rSPanelShadow1 = new rojeru_san.RSPanelShadow();
         jPanel1 = new javax.swing.JPanel();
         rSPanelShadow2 = new rojeru_san.RSPanelShadow();
@@ -49,6 +54,25 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         rSMTextFull3 = new rojeru_san.RSMTextFull();
         rSButtonRiple3 = new rojeru_san.RSButtonRiple();
         botonCancelar = new rojeru_san.RSButtonRiple();
+
+        menuItemEliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        menuItemEliminar.setText("Eliminar");
+        menuItemEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEliminarActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(menuItemEliminar);
+        jPopupMenu1.add(jSeparator1);
+
+        menuItemModificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        menuItemModificar.setText("Modificar");
+        menuItemModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemModificarActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(menuItemModificar);
 
         setClosable(true);
         setIconifiable(true);
@@ -120,6 +144,8 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         ));
         tablaInsumos.setAlignmentX(0.6F);
         tablaInsumos.setAlignmentY(0.6F);
+        tablaInsumos.setColorSelBackgound(new java.awt.Color(51, 51, 51));
+        tablaInsumos.setComponentPopupMenu(jPopupMenu1);
         tablaInsumos.setFuenteFilas(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tablaInsumos.setFuenteFilasSelect(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jScrollPane1.setViewportView(tablaInsumos);
@@ -151,9 +177,9 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
             .addGroup(pnlTablaInsumosLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addGroup(pnlTablaInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlTablaInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -269,19 +295,7 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void CargarTabla(){
-        String consulta = "select * from insumo "; //Consulta basica
-        int id;
-        if(!"".equals(txtBuscar.getText())){ //Se ve si la caja de texto esta vacia. 
-            try {
-               id = Integer.parseInt(txtBuscar.getText());//Se pasa de String a Int 
-               consulta = consulta + "where idinsumo = "+id;//Si no hay error al pasar el String a Int se agrega a la condicion la sentencia de ID
-            } catch (Exception e) {//Si hay error al pasar de String a Int se agrega a la condicion la sentencia de nombre
-                consulta = consulta + "where nombre = '"+txtBuscar.getText()+"'";
-            }
-        }
-        VariablesGlobales.conexion.llenarTabla(titulos,tablaInsumos,consulta);//Clase que hereda de conexionMySQL y conexionMySQL hereda de ConexionBD
-    }
+    
     private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
         if(!this.botonNuevo.isSelected()){
             this.botonNuevo.setSelected(true);
@@ -299,14 +313,37 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarActionPerformed
-        CargarTabla();
+       VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
     }//GEN-LAST:event_botonCargarActionPerformed
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
       if(txtBuscar.getText().length() == 0){
-          CargarTabla();
+        VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
       }
     }//GEN-LAST:event_txtBuscarKeyTyped
+
+    private void menuItemEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEliminarActionPerformed
+          int fila = tablaInsumos.getSelectedRow(),respuesta;
+          if(fila>=0){
+              respuesta = JOptionPane.showConfirmDialog(null,"¿Esta seguro de eliminar el insumo: "+tablaInsumos.getValueAt(fila,1)+"?"
+                      ,"Advertencia",JOptionPane.WARNING_MESSAGE);
+              if(respuesta == 0){
+              VariablesGlobales.conexion.EjecutarInstruccion("delete from insumo where idinsumo = "+tablaInsumos.getValueAt(fila,0));
+              JOptionPane.showMessageDialog(null,"Insumo eliminado correctamente","Mensaje",JOptionPane.INFORMATION_MESSAGE);
+              VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
+              }   
+          }
+          else{
+              JOptionPane.showMessageDialog(null,"Seleccione un insumo","Advertencia",JOptionPane.WARNING_MESSAGE);
+          }
+    }//GEN-LAST:event_menuItemEliminarActionPerformed
+
+    private void menuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemModificarActionPerformed
+        int fila = tablaInsumos.getSelectedRow();
+        if(fila>=0){
+            
+        }
+    }//GEN-LAST:event_menuItemModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -319,7 +356,11 @@ public class VentanaInternaInsumo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem menuItemEliminar;
+    private javax.swing.JMenuItem menuItemModificar;
     private javax.swing.JPanel pnlNuevoInsumo;
     private rojeru_san.RSPanelsSlider pnlSlider;
     private javax.swing.JPanel pnlTablaInsumos;

@@ -79,7 +79,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ItemInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemInsumosActionPerformed
-      VentanaInternaInsumo insumo = new VentanaInternaInsumo();
+      VentanaInternaInusmo insumo = new VentanaInternaInusmo();
       this.jdpPrincipal.add(insumo);
       insumo.show();
     }//GEN-LAST:event_ItemInsumosActionPerformed
