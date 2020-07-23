@@ -166,7 +166,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" pref="105" max="-2" attributes="0"/>
-                              <EmptySpace pref="388" max="32767" attributes="0"/>
+                              <EmptySpace pref="400" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -242,7 +242,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="390" max="-2" attributes="0"/>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="34" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -335,15 +335,15 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="rSMTextFull3" pref="410" max="32767" attributes="0"/>
-                                          <Component id="rSMTextFull2" max="32767" attributes="0"/>
+                                          <Component id="txtDescripNuevo" pref="410" max="32767" attributes="0"/>
+                                          <Component id="txtNombreNuevo" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                      <Component id="rSButtonRiple3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAceptarNuevo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="botonCancelar" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnCancelarNuevo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="58" max="32767" attributes="0"/>
@@ -355,13 +355,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" pref="38" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                              <Component id="rSMTextFull2" min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="txtNombreNuevo" min="-2" pref="52" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="rSMTextFull3" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace pref="116" max="32767" attributes="0"/>
+                              <Component id="txtDescripNuevo" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace pref="128" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="rSButtonRiple3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAceptarNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCancelarNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                           </Group>
@@ -381,17 +381,17 @@
                         <Property name="text" type="java.lang.String" value="Nuevo Insumo"/>
                       </Properties>
                     </Component>
-                    <Component class="rojeru_san.RSMTextFull" name="rSMTextFull2">
+                    <Component class="rojeru_san.RSMTextFull" name="txtNombreNuevo">
                       <Properties>
                         <Property name="placeholder" type="java.lang.String" value="Nombre"/>
                       </Properties>
                     </Component>
-                    <Component class="rojeru_san.RSMTextFull" name="rSMTextFull3">
+                    <Component class="rojeru_san.RSMTextFull" name="txtDescripNuevo">
                       <Properties>
                         <Property name="placeholder" type="java.lang.String" value="Descripcion"/>
                       </Properties>
                     </Component>
-                    <Component class="rojeru_san.RSButtonRiple" name="rSButtonRiple3">
+                    <Component class="rojeru_san.RSButtonRiple" name="btnAceptarNuevo">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aceptar"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -399,7 +399,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="rojeru_san.RSButtonRiple" name="botonCancelar">
+                    <Component class="rojeru_san.RSButtonRiple" name="btnCancelarNuevo">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -407,7 +407,107 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelarActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarNuevoActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="pnlModificarInsumo">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="pnlModificarInsumo" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card4"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel4" pref="514" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnAceptarModificar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnCancelarModificar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtDescripModificar" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtNombreModificar" alignment="0" min="-2" pref="410" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel4" min="-2" pref="38" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="txtNombreModificar" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="txtDescripModificar" min="-2" pref="58" max="-2" attributes="0"/>
+                              <EmptySpace pref="148" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnAceptarModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCancelarModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel4">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="24" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="c0" green="70" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Modificar Insumo"/>
+                      </Properties>
+                    </Component>
+                    <Component class="rojeru_san.RSMTextFull" name="txtNombreModificar">
+                      <Properties>
+                        <Property name="placeholder" type="java.lang.String" value="Nombre"/>
+                      </Properties>
+                    </Component>
+                    <Component class="rojeru_san.RSMTextFull" name="txtDescripModificar">
+                      <Properties>
+                        <Property name="placeholder" type="java.lang.String" value="Descripcion"/>
+                      </Properties>
+                    </Component>
+                    <Component class="rojeru_san.RSButtonRiple" name="btnAceptarModificar">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Aceptar"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Roboto Bold" size="18" style="1"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarModificarActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="rojeru_san.RSButtonRiple" name="btnCancelarModificar">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Cancelar"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Roboto Bold" size="18" style="1"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarModificarActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

@@ -16,6 +16,7 @@ import rojerusan.RSAnimation;
 public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
 
     private String[] titulos = {"ID","Nombre","Descripcion"};
+    private String variableAux;
     public VentanaInternaInusmo() {
         initComponents();
         VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
@@ -50,10 +51,16 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
         botonCargar = new rojeru_san.RSButton();
         pnlNuevoInsumo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        rSMTextFull2 = new rojeru_san.RSMTextFull();
-        rSMTextFull3 = new rojeru_san.RSMTextFull();
-        rSButtonRiple3 = new rojeru_san.RSButtonRiple();
-        botonCancelar = new rojeru_san.RSButtonRiple();
+        txtNombreNuevo = new rojeru_san.RSMTextFull();
+        txtDescripNuevo = new rojeru_san.RSMTextFull();
+        btnAceptarNuevo = new rojeru_san.RSButtonRiple();
+        btnCancelarNuevo = new rojeru_san.RSButtonRiple();
+        pnlModificarInsumo = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtNombreModificar = new rojeru_san.RSMTextFull();
+        txtDescripModificar = new rojeru_san.RSMTextFull();
+        btnAceptarModificar = new rojeru_san.RSButtonRiple();
+        btnCancelarModificar = new rojeru_san.RSButtonRiple();
 
         menuItemEliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         menuItemEliminar.setText("Eliminar");
@@ -101,7 +108,7 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
 
         rSPanelShadow2.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -182,7 +189,7 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pnlSlider.add(pnlTablaInsumos, "card2");
@@ -195,18 +202,18 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nuevo Insumo");
 
-        rSMTextFull2.setPlaceholder("Nombre");
+        txtNombreNuevo.setPlaceholder("Nombre");
 
-        rSMTextFull3.setPlaceholder("Descripcion");
+        txtDescripNuevo.setPlaceholder("Descripcion");
 
-        rSButtonRiple3.setText("Aceptar");
-        rSButtonRiple3.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        btnAceptarNuevo.setText("Aceptar");
+        btnAceptarNuevo.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
 
-        botonCancelar.setText("Cancelar");
-        botonCancelar.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarNuevo.setText("Cancelar");
+        btnCancelarNuevo.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        btnCancelarNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
+                btnCancelarNuevoActionPerformed(evt);
             }
         });
 
@@ -220,13 +227,13 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
                     .addGroup(pnlNuevoInsumoLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(pnlNuevoInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rSMTextFull3, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-                            .addComponent(rSMTextFull2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtDescripNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                            .addComponent(txtNombreNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlNuevoInsumoLayout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addComponent(rSButtonRiple3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAceptarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancelarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         pnlNuevoInsumoLayout.setVerticalGroup(
@@ -234,17 +241,81 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
             .addGroup(pnlNuevoInsumoLayout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91)
-                .addComponent(rSMTextFull2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNombreNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(rSMTextFull3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addComponent(txtDescripNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addGroup(pnlNuevoInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rSButtonRiple3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAceptarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93))
         );
 
         pnlSlider.add(pnlNuevoInsumo, "card3");
+
+        pnlModificarInsumo.setName("pnlModificarInsumo"); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 112, 192));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Modificar Insumo");
+
+        txtNombreModificar.setPlaceholder("Nombre");
+
+        txtDescripModificar.setPlaceholder("Descripcion");
+
+        btnAceptarModificar.setText("Aceptar");
+        btnAceptarModificar.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        btnAceptarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarModificarActionPerformed(evt);
+            }
+        });
+
+        btnCancelarModificar.setText("Cancelar");
+        btnCancelarModificar.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        btnCancelarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarModificarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlModificarInsumoLayout = new javax.swing.GroupLayout(pnlModificarInsumo);
+        pnlModificarInsumo.setLayout(pnlModificarInsumoLayout);
+        pnlModificarInsumoLayout.setHorizontalGroup(
+            pnlModificarInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlModificarInsumoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlModificarInsumoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlModificarInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlModificarInsumoLayout.createSequentialGroup()
+                        .addComponent(btnAceptarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlModificarInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtDescripModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(51, 51, 51))
+        );
+        pnlModificarInsumoLayout.setVerticalGroup(
+            pnlModificarInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlModificarInsumoLayout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(txtNombreModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(txtDescripModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addGroup(pnlModificarInsumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78))
+        );
+
+        pnlSlider.add(pnlModificarInsumo, "card4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -299,18 +370,18 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
     private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
         if(!this.botonNuevo.isSelected()){
             this.botonNuevo.setSelected(true);
-            this.botonCancelar.setSelected(false);
+            this.btnCancelarNuevo.setSelected(false);
             this.pnlSlider.setPanelSlider(20,pnlNuevoInsumo,RSPanelsSlider.DIRECT.RIGHT);
         }
     }//GEN-LAST:event_botonNuevoActionPerformed
 
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-       if(!this.botonCancelar.isSelected()){
+    private void btnCancelarNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNuevoActionPerformed
+       if(!this.btnCancelarNuevo.isSelected()){
             this.botonNuevo.setSelected(false);
-            this.botonCancelar.setSelected(true);
+            this.btnCancelarNuevo.setSelected(true);
             this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
         }
-    }//GEN-LAST:event_botonCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarNuevoActionPerformed
 
     private void botonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarActionPerformed
        VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
@@ -341,19 +412,54 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
     private void menuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemModificarActionPerformed
         int fila = tablaInsumos.getSelectedRow();
         if(fila>=0){
+            if(!this.menuItemModificar.isSelected()){
+            this.menuItemModificar.setSelected(true);
+            this.btnCancelarModificar.setSelected(false);
+            this.pnlSlider.setPanelSlider(20,pnlModificarInsumo,RSPanelsSlider.DIRECT.RIGHT);
             
+            txtNombreModificar.setText((String) tablaInsumos.getValueAt(fila,1));
+            txtDescripModificar.setText((String) tablaInsumos.getValueAt(fila,2));
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Seleccione un insumo","Adverntencia",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_menuItemModificarActionPerformed
 
+    private void btnCancelarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarModificarActionPerformed
+        if(!this.btnCancelarModificar.isSelected()){
+            this.menuItemModificar.setSelected(false);
+            this.btnCancelarModificar.setSelected(true);
+            this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
+            
+            txtNombreModificar.setText("");
+            txtDescripModificar.setText("");
+        }
+    }//GEN-LAST:event_btnCancelarModificarActionPerformed
+
+    private void btnAceptarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarModificarActionPerformed
+
+        if(txtNombreModificar.getText().length()>0 && txtDescripModificar.getText().length()>0){
+           
+       }
+       else{
+           JOptionPane.showMessageDialog(null,"Llene todos los campos","Advertencia",JOptionPane.WARNING_MESSAGE);
+       }
+    }//GEN-LAST:event_btnAceptarModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojeru_san.RSButtonRiple botonCancelar;
     private rojeru_san.RSButton botonCargar;
     private rojeru_san.RSButtonRiple botonNuevo;
     private rojeru_san.RSButtonRiple botonReporte;
+    private rojeru_san.RSButtonRiple btnAceptarModificar;
+    private rojeru_san.RSButtonRiple btnAceptarNuevo;
+    private rojeru_san.RSButtonRiple btnCancelarModificar;
+    private rojeru_san.RSButtonRiple btnCancelarNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -361,15 +467,17 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem menuItemEliminar;
     private javax.swing.JMenuItem menuItemModificar;
+    private javax.swing.JPanel pnlModificarInsumo;
     private javax.swing.JPanel pnlNuevoInsumo;
     private rojeru_san.RSPanelsSlider pnlSlider;
     private javax.swing.JPanel pnlTablaInsumos;
-    private rojeru_san.RSButtonRiple rSButtonRiple3;
-    private rojeru_san.RSMTextFull rSMTextFull2;
-    private rojeru_san.RSMTextFull rSMTextFull3;
     private rojeru_san.RSPanelShadow rSPanelShadow1;
     private rojeru_san.RSPanelShadow rSPanelShadow2;
     private rojerusan.RSTableMetro tablaInsumos;
     private rojeru_san.RSMTextFull txtBuscar;
+    private rojeru_san.RSMTextFull txtDescripModificar;
+    private rojeru_san.RSMTextFull txtDescripNuevo;
+    private rojeru_san.RSMTextFull txtNombreModificar;
+    private rojeru_san.RSMTextFull txtNombreNuevo;
     // End of variables declaration//GEN-END:variables
 }
