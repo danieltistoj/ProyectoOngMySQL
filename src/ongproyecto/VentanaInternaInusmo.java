@@ -328,9 +328,9 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
               respuesta = JOptionPane.showConfirmDialog(null,"¿Esta seguro de eliminar el insumo: "+tablaInsumos.getValueAt(fila,1)+"?"
                       ,"Advertencia",JOptionPane.WARNING_MESSAGE);
               if(respuesta == 0){
-              VariablesGlobales.conexion.EjecutarInstruccion("delete from insumo where idinsumo = "+tablaInsumos.getValueAt(fila,0));
+              VariablesGlobales.conexion.EjecutarInstruccion("delete from insumo where idinsumo = "+tablaInsumos.getValueAt(fila,0));//se elimina el insumo
               JOptionPane.showMessageDialog(null,"Insumo eliminado correctamente","Mensaje",JOptionPane.INFORMATION_MESSAGE);
-              VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
+              VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);//se carga nuevamente la tabla
               }   
           }
           else{
