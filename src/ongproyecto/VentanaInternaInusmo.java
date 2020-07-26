@@ -417,6 +417,7 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
             this.btnCancelarModificar.setSelected(false);
             this.pnlSlider.setPanelSlider(20,pnlModificarInsumo,RSPanelsSlider.DIRECT.RIGHT);
             
+            variableAux = (String) tablaInsumos.getValueAt(fila,1);
             txtNombreModificar.setText((String) tablaInsumos.getValueAt(fila,1));
             txtDescripModificar.setText((String) tablaInsumos.getValueAt(fila,2));
         }
@@ -438,9 +439,28 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarModificarActionPerformed
 
     private void btnAceptarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarModificarActionPerformed
-
         if(txtNombreModificar.getText().length()>0 && txtDescripModificar.getText().length()>0){
-           
+           if(txtNombreModificar.getText() == variableAux){     
+           }
+           else{
+               if(VariablesGlobales.conexion.consultaVacia("select * from insumo where nombre = '"+txtNombreModificar.getText()+"'")){
+                   VariablesGlobales.conexion.anteSalaModificar("set nombre = '"+txtNombreModificar.getText()+"', descipcion = '"+txtDescripModificar.getText()+"'"
+                           ,"insumo","nombre","'"+variableAux+"'");
+                   JOptionPane.showMessageDialog(null,"Registro modificado","Mensaje",JOptionPane.INFORMATION_MESSAGE);
+                   //Regresar al panel de la tabla insumos 
+                   this.menuItemModificar.setSelected(false);
+                    this.btnCancelarModificar.setSelected(true);
+                    this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
+
+                    txtNombreModificar.setText("");
+                    txtDescripModificar.setText("");
+                    
+                    VariablesGlobales.conexion.CargarTabla("insumo","", titulos, tablaInsumos);//Volver a cargar la tabla.
+               }
+               else{
+                   JOptionPane.showMessageDialog(null,"El nombre del insumo ya existe","Advertencia",JOptionPane.WARNING_MESSAGE);
+               }
+           }
        }
        else{
            JOptionPane.showMessageDialog(null,"Llene todos los campos","Advertencia",JOptionPane.WARNING_MESSAGE);

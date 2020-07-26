@@ -141,4 +141,8 @@ public class ConexionBD {
         }
          llenarTabla(titulo, tablaInterfaz, consulta);//Clase que hereda de conexionMySQL y conexionMySQL hereda de ConexionBD
     }
+     public void anteSalaModificar(String cambios,String tabla,String parametroCondicional, String parametro){
+         String consulta = "update "+tabla+" "+cambios+" where "+parametroCondicional+" = "+parametro;
+         EjecutarInstruccion(consulta);
+     }
 }
