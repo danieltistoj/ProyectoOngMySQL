@@ -145,4 +145,9 @@ public class ConexionBD {
          String consulta = "update "+tabla+" "+cambios+" where "+parametroCondicional+" = "+parametro;
          EjecutarInstruccion(consulta);
      }
+     
+     public void anteSalaNuevo(String tabla,String parametros, String datos){
+         String consulta = "insert into "+tabla+" ("+parametros+") values ("+datos+")";
+         EjecutarInstruccion(consulta);
+     }
 }

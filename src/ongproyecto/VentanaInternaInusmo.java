@@ -208,6 +208,11 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
 
         btnAceptarNuevo.setText("Aceptar");
         btnAceptarNuevo.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
+        btnAceptarNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarNuevoActionPerformed(evt);
+            }
+        });
 
         btnCancelarNuevo.setText("Cancelar");
         btnCancelarNuevo.setFont(new java.awt.Font("Roboto Bold", 1, 18)); // NOI18N
@@ -365,21 +370,42 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public void regresarPanelTabla(){
+            this.botonNuevo.setSelected(false);
+            this.btnCancelarNuevo.setSelected(true);
+            this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
+            
+            txtDescripNuevo.setText("");
+            txtNombreNuevo.setText("");
+}
 
-    
-    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
-        if(!this.botonNuevo.isSelected()){
+public void regresarPanelTablaM(){
+    this.menuItemModificar.setSelected(false);
+    this.btnCancelarModificar.setSelected(true);
+    this.pnlSlider.setPanelSlider(20, pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
+}
+public void panelNuevoInsumo(){
+     if(!this.botonNuevo.isSelected()){
             this.botonNuevo.setSelected(true);
             this.btnCancelarNuevo.setSelected(false);
             this.pnlSlider.setPanelSlider(20,pnlNuevoInsumo,RSPanelsSlider.DIRECT.RIGHT);
         }
+}
+public void panelModificarInsumon(){
+    if(!this.menuItemModificar.isSelected()){
+        this.menuItemModificar.setSelected(true);
+        this.btnCancelarModificar.setSelected(false);
+        this.pnlSlider.setPanelSlider(20,pnlModificarInsumo,RSPanelsSlider.DIRECT.RIGHT);
+    }
+}
+    
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+        panelNuevoInsumo();
     }//GEN-LAST:event_botonNuevoActionPerformed
 
     private void btnCancelarNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNuevoActionPerformed
        if(!this.btnCancelarNuevo.isSelected()){
-            this.botonNuevo.setSelected(false);
-            this.btnCancelarNuevo.setSelected(true);
-            this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
+           regresarPanelTabla();
         }
     }//GEN-LAST:event_btnCancelarNuevoActionPerformed
 
@@ -412,15 +438,11 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
     private void menuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemModificarActionPerformed
         int fila = tablaInsumos.getSelectedRow();
         if(fila>=0){
-            if(!this.menuItemModificar.isSelected()){
-            this.menuItemModificar.setSelected(true);
-            this.btnCancelarModificar.setSelected(false);
-            this.pnlSlider.setPanelSlider(20,pnlModificarInsumo,RSPanelsSlider.DIRECT.RIGHT);
-            
+            panelModificarInsumon();
             variableAux = (String) tablaInsumos.getValueAt(fila,1);
             txtNombreModificar.setText((String) tablaInsumos.getValueAt(fila,1));
             txtDescripModificar.setText((String) tablaInsumos.getValueAt(fila,2));
-        }
+        
         }
         else{
             JOptionPane.showMessageDialog(null,"Seleccione un insumo","Adverntencia",JOptionPane.WARNING_MESSAGE);
@@ -429,12 +451,7 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
 
     private void btnCancelarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarModificarActionPerformed
         if(!this.btnCancelarModificar.isSelected()){
-            this.menuItemModificar.setSelected(false);
-            this.btnCancelarModificar.setSelected(true);
-            this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
-            
-            txtNombreModificar.setText("");
-            txtDescripModificar.setText("");
+            regresarPanelTablaM();
         }
     }//GEN-LAST:event_btnCancelarModificarActionPerformed
 
@@ -448,13 +465,7 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
                            ,"insumo","nombre","'"+variableAux+"'");
                    JOptionPane.showMessageDialog(null,"Registro modificado","Mensaje",JOptionPane.INFORMATION_MESSAGE);
                    //Regresar al panel de la tabla insumos 
-                   this.menuItemModificar.setSelected(false);
-                    this.btnCancelarModificar.setSelected(true);
-                    this.pnlSlider.setPanelSlider(20,pnlTablaInsumos,RSPanelsSlider.DIRECT.RIGHT);
-
-                    txtNombreModificar.setText("");
-                    txtDescripModificar.setText("");
-                    
+                    regresarPanelTabla();
                     VariablesGlobales.conexion.CargarTabla("insumo","", titulos, tablaInsumos);//Volver a cargar la tabla.
                }
                else{
@@ -466,6 +477,27 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(null,"Llene todos los campos","Advertencia",JOptionPane.WARNING_MESSAGE);
        }
     }//GEN-LAST:event_btnAceptarModificarActionPerformed
+
+    private void btnAceptarNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarNuevoActionPerformed
+        if(txtNombreNuevo.getText().length() != 0 && txtDescripNuevo.getText().length()!=0){
+            if(VariablesGlobales.conexion.consultaVacia("select * from insumo where nombre = '"+txtNombreNuevo.getText()+"'")){
+                VariablesGlobales.conexion.anteSalaNuevo("insumo", "nombre, descipcion","'"+txtNombreNuevo.getText()+"' , "+"'"+txtDescripNuevo.getText()+"'");
+                
+                JOptionPane.showMessageDialog(null,"Se ingreso el insumo","Mensaje",JOptionPane.INFORMATION_MESSAGE);
+                //regresa al panel de la tabla insumo 
+                    regresarPanelTabla();
+                    VariablesGlobales.conexion.CargarTabla("insumo","", titulos, tablaInsumos);//Volver a cargar la tabla.
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"El nombre del insumo ya existe","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Llene todos los campos","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAceptarNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
