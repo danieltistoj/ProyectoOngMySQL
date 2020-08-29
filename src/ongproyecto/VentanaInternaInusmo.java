@@ -17,6 +17,7 @@ public class VentanaInternaInusmo extends javax.swing.JInternalFrame {
 
     private String[] titulos = {"ID","Nombre","Descripcion"};
     private String variableAux;
+    private VariablesGlobales varGlobal;
     public VentanaInternaInusmo() {
         initComponents();
         VariablesGlobales.conexion.CargarTabla("insumo",txtBuscar.getText(), titulos, tablaInsumos);
